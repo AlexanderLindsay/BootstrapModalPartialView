@@ -26,5 +26,11 @@ namespace BootstrapModalPartialView.Controllers
 
             return View();
         }
+
+        public ActionResult ModalAction(int Id)
+        {
+            ViewBag.Id = Id;
+            return PartialView("ModalContent");
+        }
     }
 }
