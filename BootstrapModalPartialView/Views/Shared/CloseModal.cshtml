@@ -1,0 +1,35 @@
+﻿@model BootstrapModalPartialView.Models.CloseModal
+
+@if (Model.ShouldClose)
+{
+    <script type="text/javascript">
+        $(function () {
+            $('#modal-container').modal('hide');
+        });
+    </script>
+}
+
+@if (Model.FetchData)
+{
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                method: "GET",
+                datatype: "text/plain",
+                url: "@Model.Destination",
+                cache: false
+            }).done(function (result) {
+                $("#@Model.Target").html(result);
+                @if (!string.IsNullOrWhiteSpace(Model.OnSuccess))
+                {
+                    <text>
+                    var onSuccess = @Model.OnSuccess;
+                    if(typeof onSuccess === 'function'){
+                        onSuccess();
+                    }
+                    </text>
+                }
+            });
+        });
+    </script>
+}

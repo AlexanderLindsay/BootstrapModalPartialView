@@ -9,15 +9,30 @@
         @* Create a link that calls the controller method that returns the partial view*@
         @Html.ActionLink("Open Modal", "ModalAction", "Home", new { Id = id }, new
         {
-            @* Optional class*@
-                @class = "modal-link",
-                @* Needed to link to the html of the modal*@
-                data_target = "#modal-container",
-                @* Tells the bootstrap javascript to do its thing*@
+            @* Needed to link to the html of the modal*@
+            data_target = "#modal-container",
+            @* Tells the bootstrap javascript to do its thing*@
             data_toggle = "modal"
         })
     </div>
 }
+
+@* modals with an embeded form*@
+@foreach (var id in ids)
+{
+    <div>
+        @Html.ActionLink("Open Form Modal", "ModalFormAction", "Home", new { Id = id }, new
+        {
+            data_target = "#modal-container",
+            data_toggle = "modal"
+        })
+    </div>
+}
+
+@* the div the form will fill when it succeeds *@
+<div id="list">
+
+</div>
 
 @* The normal bootstrap modal with out any content in the modal-content div. Note that the id matches the data_target from the link*@
 <div id="modal-container" class="modal fade hidden-print" tabindex="-1" role="dialog">
@@ -37,5 +52,10 @@
                 $('#modal-container .modal-content').empty();
             });
         });
+
+        @* callback from form modal*@
+        function success() {
+            alert("Success!");
+        }
     </script>
 }
