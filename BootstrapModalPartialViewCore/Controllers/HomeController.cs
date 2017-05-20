@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using BootstrapModalPartialViewCore.Models;
+﻿using BootstrapModalPartialViewCore.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BootstrapModalPartialViewCore.Controllers
 {
